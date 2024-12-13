@@ -1,9 +1,14 @@
-<script setup>
-</script>
 
 <template>
-  <router-view />
+  <div class="app">
+    <router-view />
+  </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.app {
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
 </style>
