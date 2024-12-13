@@ -64,7 +64,7 @@ const handleconfirm = () => {
    //清除token
   localStorage.removeItem("token");
   //跳转登录页
-  window.location.href = "/";
+  window.location.href = "/login";
 
 }
 </script>

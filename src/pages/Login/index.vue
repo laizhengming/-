@@ -84,7 +84,7 @@ const submitForm = () => {
       if (form.value.username == "admin" && form.value.password == "123456") {
         Message.success("登录成功");
         localStorage.setItem("token", "123456");
-        window.location.href = "/Main";
+        window.location.href = "/";
       } else {
         Message.error("请输入正确的账号密码");
         return false;
