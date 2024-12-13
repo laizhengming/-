@@ -10,27 +10,37 @@
           <span class="username">admin</span>
         </div>
         <div class="sy_in">
-          <el-icon><Promotion /></el-icon>
+          <div class="sy_in_icon">
+            <el-icon><Promotion /></el-icon>
+          </div>
           <span>返回首页</span>
         </div>
         <div class="down">
           <!--图标-->
-          <Edit />
-          <el-dropdown :hide-on-click="false">
-            <span class="el-dropdown-link">
-              退出<el-icon class="el-icon--right"><arrow-down /></el-icon>
-            </span>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item>Action 1</el-dropdown-item>
-                <el-dropdown-item>Action 2</el-dropdown-item>
-                <el-dropdown-item>Action 3</el-dropdown-item>
-                <el-dropdown-item disabled>Action 4</el-dropdown-item>
-                <el-dropdown-item divided>Action 5</el-dropdown-item>
-                <el-dropdown-item divided>Action 6</el-dropdown-item>
-              </el-dropdown-menu>
+          <div class="down_icon">
+            <SwitchButton />
+          </div>
+          <el-popconfirm
+            width="220"
+            :icon="InfoFilled"
+            icon-color="#626AEF"
+            title="确定要退出吗"
+            @cancel="onCancel"
+          >
+            <template #reference>
+              <span>退出</span>
             </template>
-          </el-dropdown>
+            <template #actions="{  cancel }">
+              <el-button size="small" @click="cancel">取消</el-button>
+              <el-button
+                type="danger"
+                size="small"
+                @click="handleconfirm"
+              >
+                确定
+              </el-button>
+            </template>
+          </el-popconfirm>
         </div>
       </div>
     </div>
@@ -38,7 +48,25 @@
 </template>
 
 <script setup>
-import { Edit, Promotion } from "@element-plus/icons-vue";
+import { ref } from "vue";
+import {
+  Edit,
+  Promotion,
+  InfoFilled,
+  SwitchButton,
+} from "@element-plus/icons-vue";
+const clicked = ref(false);
+function onCancel() {
+  clicked.value = true;
+}
+//退出
+const handleconfirm = () => {
+   //清除token
+  localStorage.removeItem("token");
+  //跳转登录页
+  window.location.href = "/";
+
+}
 </script>
 
 <style scoped lang="scss">
@@ -60,6 +88,7 @@ import { Edit, Promotion } from "@element-plus/icons-vue";
 }
 .avatar {
   margin-right: 20px;
+  margin-right: 50px;
   .username {
     margin-left: 10px;
     position: relative;
@@ -67,9 +96,23 @@ import { Edit, Promotion } from "@element-plus/icons-vue";
   }
 }
 .sy_in {
-  margin: 5px 10px -0 0;
+  display: flex;
+  .sy_in_icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 2px;
+    left: -10px;
+  }
+}
+.down_icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 .down {
-  margin: 10px 10px 0 10px;
+  display: flex;
+  margin: 0 50px 0 50px;
 }
 </style>
