@@ -27,8 +27,8 @@ import Header from "@/components/Header/index.vue";
   .el-container {
     height: 100%;
   }
-  .el-aside {
-    background-color: #545c64;
+  .el-header{
+    padding: 0;
   }
 }
 

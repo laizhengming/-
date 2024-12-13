@@ -14,7 +14,7 @@
               <el-icon><Notebook /></el-icon>
               <span>文章操作</span>
             </template>
-            <el-menu-item-group>
+            <el-menu-item-group title="这是一个分组">
               <el-menu-item index="1-1">
                 <template #title>
                   <el-icon><EditPen /></el-icon>
@@ -67,7 +67,7 @@ import {
   UserFilled,
   EditPen,
   Edit,
-  GoodsFilled
+  GoodsFilled,
 } from "@element-plus/icons-vue";
 </script>
 
@@ -84,7 +84,7 @@ import {
   font-weight: 600;
   color: #333;
   letter-spacing: 2px;
- margin-top: 30px;
+  margin-top: 30px;
 }
 .el-menu {
   height: 100%;
